@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>商统homework1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%95%86%E7%BB%9Fhomework1">商统homework1</h1>
+<h3 id="%E7%AC%AC%E4%B8%80%E9%A2%98">第一题</h3>
+<p>(a). The skewness is 0.69 and the coefficient of variation is 73.94%</p>
+<p>(b). Provide a five-number summary.</p>
+<p>​ smallest value: 608</p>
+<p>​ first quantile: 1861</p>
+<p>​ median: 4019</p>
+<p>​ third quantile: 8356.5</p>
+<p>​ largest value: 14138</p>
+<p>(c). Show a boxplot</p>
+<p><img src="C:\Users\yym20\AppData\Roaming\Typora\typora-user-images\image-20211010131018291.png" alt="image-20211010131018291"></p>
+<h3 id="%E7%AC%AC%E4%BA%8C%E9%A2%98">第二题</h3>
+<p>(a). What is the probability that each sample of size 2 is selected?<br>
+$$
+1/10=0.1
+$$
+P(AB) = P(AC) = ... = P(DE) = 0.1</p>
+<p>(b).   A=1, B=2, C=3, D=4, E=5</p>
+<p>$$
+8 \Rightarrow ignore\
+0 \Rightarrow ignore\
+5 \Rightarrow E\
+7 \Rightarrow ignore\
+5 \Rightarrow E\
+3 \Rightarrow C\
+2 \Rightarrow B
+$$</p>
+<h3 id="%E7%AC%AC%E4%B8%89%E9%A2%98">第三题</h3>
+<p>(a). 分层随机抽样</p>
+<p>​ 可以将人口划分为2个层次：女性和男性</p>
+<p>​ 女性层次抽取：16人（0.4*40=16）</p>
+<p>​ 男性层次抽取：24人（0.4*60=2）</p>
+<p>(b). 整群抽样</p>
+<p>​ 按照班级进行划分，将总体分为5个群，每个群有20人</p>
+<p>​ 由于需要在100人中抽取40人，所以需要抽取2个群（0.4*5=2）</p>
+<p>​ 从5个群里抽取2个群（共40人）</p>
+<h3 id="%E7%AC%AC%E5%9B%9B%E9%A2%98">第四题</h3>
+<p>mean（平均值）: $$\mu=200$$</p>
+<p>standard deviation（标准差）: $$\sigma=50$$</p>
+<p>sample size: 100</p>
+<p>sample mean:  $$\overline{x}$$    (be used to estimate the population mean )</p>
+<p>(a). What is the expected value of  $$\overline{x}$$ ?</p>
+<p>$$
+E(\overline{x})=\mu=200
+$$</p>
+<p>(b). What is the standard deviation of   $$\overline{x}$$?</p>
+<p>$$
+\sigma_\overline{x}=\frac{\sigma}{\sqrt{n}}=\frac{50}{10}=5
+$$</p>
+<p>(c). Show the sampling distribution of  $$\overline{x}$$.</p>
+<p>由中心极限定理可知，$$\overline{x}$$服从均值为200、标准差为5的正态分布。
+$$
+\overline{x}\thicksim N(200,25)
+$$</p>
+<p>(d). What is the probability that  $$\overline{x}$$  will be within ±5 of population mean?</p>
+<p>$$
+P(195\leq\overline{x}\leq205)
+\
+=P(\frac{195-E(\overline{x})}{\sigma_\overline{x}}\leq\frac{\overline{x}-E(\overline{x})}{\sigma_\overline{x}}\leq\frac{205-E(\overline{x})}{\sigma_\overline{x}})
+\
+=\phi(1)-\phi(-1)
+\
+=0.8413-(1-0.8413)=0.6826
+$$</p>
+<h3 id="%E7%AC%AC%E4%BA%94%E9%A2%98">第五题</h3>
+<ol start="5">
+<li>Forty-two percent of primary care doctors think their patients receive unnecessarymedical care. Suppose the population of primary care doctors is sufficiently large.</li>
+</ol>
+<p>(a). A sample of 300 primary care doctors were taken. Show the sampling distribution of the proportion of the doctors who think their patients receive unnecessary
+medical care.</p>
+<p>总体比率: $$p=0.42$$</p>
+<p>样本比率: $$\overline{p}$$</p>
+<p>对于一个容量为300的简单随机样本：</p>
+<p>由于  $$np=300<em>0.42=126\geq5 \quad and \quad n(1-p)=300</em>0.58=174\geq5$$</p>
+<p>$\overline{p}$ 的抽样分布可以用正态分布近似:
+$$
+E(\overline{p})=p=0.42\
+\sigma_\overline{p}=\sqrt{\frac{p(1-p)}{n}}\approx0.0285
+$$
+所以，样本比例的抽样分布服从均值为0.42、标准差约为0.0285的正态分布。</p>
+<p>(b). What is the probability that the sample proportion will be within ±0.05 of the population proportion?
+$$
+P(0.37\leq\overline{p}\leq0.47)=P{\frac{0.37-E(\overline{p})}{\sigma_\overline{p}}\leq\frac{\overline{p}-E(\overline{p})}{\sigma_\overline{p}}\leq\frac{0.47-E(\overline{p})}{\sigma_\overline{p}}}
+\
+\approx \phi(1.75)-\phi(-1.75)=2*0.9599-1=0.9198
+$$
+(c). What would be the effect of taking a larger sample on the probability in part (b)? Why?
+如果增大样本容量，则 $E(\overline{p})=p$不变，$\sigma_{\overline{p}}$变小，
+$$\frac{0.05}{\sigma_\overline{p}}$$变大，因此(b)中所求的值会变大</p>
+<h3 id="%E7%AC%AC%E5%85%AD%E9%A2%98">第六题</h3>
+<ol start="6">
+<li>Multiple Choice Questions.</li>
+</ol>
+<p>(a). A 95% confidence interval for the population mean µ is computed from a
+random sample and found to be (6, 12). Which of the following is a correct
+statement?
+A. There is a 95% probability that µ is between 6 and 12.  错误
+B. 95% of values sampled are between 6 and 12.  正确
+C. If we took many, many additional random samples and from each computed
+a 95% confidence interval for µ, approximately 95% of these intervals would
+contain µ. 正确
+D. There is a 95% probability that the true mean is 9 and a 95% chance that
+the true margin of error is 3. 错误</p>
+<p><strong>answer：C</strong></p>
+<p>(b). A professor sampled 46 students from a large university to obtain a 95% confidence interval for the proportion of students in favor of raising ASB fees. The interval was (0.356, 0.397). If the professor had used a 90% confidence interval instead, the confidence interval would have been
+A. Wider and would have a smaller chance of missing the true proportion. 错误
+B. Narrower and would have a larger chance of missing the true proportion. 正确
+C. Narrower and would have a smaller chance of missing the true proportion. 错误
+D. Wider and would have a larger chance of missing the true proportion. 错误
+E. Wider, but the chance of missing the true proportion cannot be determined. 错误</p>
+<p>​ <strong>answer：B</strong></p>
+<p>(c). The following is a 95% confidence interval for p: (0.28,0.52). How large was
+the sample used to construct this interval?
+A. n = 28
+B. n = 77
+C. n = 64
+D. n = 34
+E. n = 91</p>
+<p>$$
+n=\frac{(z_{\alpha/2})^2 p(1-p)}{E^2}=\frac{1.96^2\times0.4\times0.6}{0.12^2}\approx64
+$$
+​ <strong>answer：C</strong></p>
+<h3 id="%E7%AC%AC%E4%B8%83%E9%A2%98">第七题</h3>
+<ol start="7">
+<li>The following annual premiums for automobile insurance are from a representative
+sample in this city.
+1905 3112 2312 2725 2545 2981 2677 2525 2627 2600 2370 2857
+2962 2545 2675 2184 2529 2115 2332 2442
+Assume the population is approximately normal.假设整体近似服从正态分布</li>
+</ol>
+<p>(a). Provide a point estimate of the mean annual automobile insurance premium in this city.</p>
+<p>总体均值的点估计为：
+$$
+\overline{x}=\frac{\sum x_i}{n}=2551
+$$
+(b). If the standard deviation of the annual premiums in this city is 200, develop a 95% confidence interval for the mean annual automobile insurance premium in this city.</p>
+<p>样本均值：$$\overline{x}=2551$$</p>
+<p>样本标准差：$$s=\sqrt{\frac{\sum(x_i-\overline{x})^2}{n-1}}=301.3$$</p>
+<p>已知$$\alpha=0.05$$，总体标准差$$\sigma=200$$</p>
+<p>查表得$$z_{\alpha/2}=z_{0.025}=1.96$$</p>
+<p>则均值的95%置信区间为：
+$$
+\overline{x} \pm z_{\alpha/2}(\sigma/\sqrt{n})=2551\pm 1.96 \times(200/\sqrt{20})=2551\pm 87.65\
+[2463.35,2638.65]
+$$</p>
+<p>(c). If the standard deviation of the annual premiums in this city is unknown, develop a 95% confidence interval for the mean annual automobile insurance premium in this city.</p>
+<p>已知$$\alpha=5%$$，自由度为$$n-1=20-1=19$$</p>
+<p>查表得$$t_{\alpha/2}=t_{0.025}=2.093$$</p>
+<p>所以95%的置信度下的边际误差为：
+$$
+t_{\alpha/2}\frac{s}{\sqrt{n}}=2.093\times \frac{301.3}{\sqrt{20}}=141.01\approx141
+$$</p>
+<p>所以，总体均值的95%置信区间为：
+$$
+\overline{x}\pm t_{\alpha/2} \frac{s}{\sqrt{n}}=2551\pm141\
+[2410,2692]
+$$</p>
+<p>(d). If you want to conduct a new survey to estimate the mean annual automobile insurance premium in this city, how large the new sample should be taken with a margin of error of 150? Use 95% confidence level.</p>
+<p>在不知道总体方差的情况下，用样本方差替代，即$$S^2 \approx 90786.32$$</p>
+<p>边际误差 $$E=150$$
+$$\alpha=0.05$$
+$$z_{\alpha/2}=z_{0.025}=1.96$$</p>
+<p>样本容量$$n=\frac{(z_{\alpha/2})^2\sigma^2}{E^2}=\frac{(z_{\alpha/2})^2S^2}{E^2}=\frac{1.96^2\times90786.32}{150^2}\approx16$$</p>
+<h3 id="%E7%AC%AC%E5%85%AB%E9%A2%98">第八题</h3>
+<ol start="8">
+<li>The Centers for Disease Control reported the percentage of smoked people among people which is 18 years old or older. Suppose that a study designed to collect new data on smokers and nonsmokers uses a preliminary estimate of the proportion who smoke of 0.30.</li>
+</ol>
+<p>(a). How large a sample should be taken to estimate the proportion of smokers in the population with a margin of error of 0.02? Use 95% confidence level.
+$$
+p=0.3, 1-p=0.7\
+E=0.02\
+z_{\alpha/2}=z_0.025=1.96\
+n=\frac{(z_{\alpha/2})^2p(1-p)}{E^2}=\frac{(1.96)^2\times0.3\times0.7}{(0.02)^2}\approx 2017
+$$
+所以，应当选取样本容量为2017.</p>
+<p>(b). Assume that the study uses your sample size recommendation in part (a) and finds 520 smokers. What is the point estimate of the proportion of smokers in the population?</p>
+<p>总体中吸烟者所占比例的点估计为：
+$$
+\overline{p}=520/2017\approx 0.2578
+$$
+(c). What is the 95% confidence interval for the proportion of smokers in the population?
+$$
+\overline{p}\pm z_{\alpha/2}\sqrt{\frac{\overline{p}(1-\overline{p})}{n}}=0.2578 \pm 1.96 \times \sqrt{\frac{0.2578(1-0.2578)}{2017}} \approx
+0.2578\pm 0.0191
+$$
+所以，置信区间为$$(0.2387,0.2769)$$</p>
+<h3 id="%E7%AC%AC%E4%B9%9D%E9%A2%98">第九题</h3>
+<ol start="9">
+<li>One of the questions in a survey asked adults if they used the Internet at least occasionally. The results showed that 454 out of 478 adults aged 18-29 answered Yes; 741 out of 833 adults aged 30-49 answered Yes; 1058 out of 1644 adults aged 50 and over answered Yes.</li>
+</ol>
+<p>(a). Develop a point estimate of the proportion of adults aged 18-29 who use the
+Internet.
+$$
+\overline{p_1}=454/478 \approx 0.9498
+$$
+(b). Develop a point estimate of the proportion of adults aged 30-49 who use the
+Internet.
+$$
+\overline{p_2}=741/833 \approx 0.8896
+$$
+(c). Develop a point estimate of the proportion of adults aged 50 and over who use
+the Internet.
+$$
+\overline{p_3}=1058/1644 \approx 0.6436
+$$
+(d). Comment on any relationship between age and Internet use that seems apparent.</p>
+<p>随着年龄增长，习惯性使用互联网的人比例减少。</p>
+<p>(e). Suppose your target population of interest is that of all adults (18 years of age
+and over). Develop an estimate of the proportion of that population who use the
+Internet.
+$$
+\overline{p}=\frac{p_1+p_2+p_3}{n_1+n_2+n_3}=\frac{454+741+1058}{478+833+1644} \approx 0.7624
+$$</p>
+<h3 id="%E7%AC%AC%E5%8D%81%E9%A2%98">第十题</h3>
+<ol start="10">
+<li>Consider a sample of random variables: X1, X2, ..., Xn, where n &gt; 10, E[Xi] = µ, Var[Xi] = σ2 &gt; 0 and the estimator: $$\hat{\mu_n}=\frac{1}{n-10}\sum^{n}_{i=11}{X_i}$$</li>
+</ol>
+<p>[ Hint: note that the sum is over (n − 10) random variables ].</p>
+<p>(a). Calculate the bias of  $$\hat{\mu_n}$$.
+$$
+bias=E(\hat{\mu_n})-\mu
+=E(\frac{1}{n-10}\sum^{n}<em>{i=11}{X_i})-\mu\
+=\frac{1}{n-10}\sum^{n}</em>{i=11}E(X_i)-\mu
+=\frac{1}{n-1}(n-1)\mu-\mu=0
+$$</p>
+<p>(b). Calculate the variance of  $$\hat{\mu_n}$$.
+$$
+Var(\frac{1}{n-10}\sum^{n}<em>{i=11}{X_i})
+=(\frac{1}{n-10})^2Var(\sum^{n}</em>{i=11}{X_i})
+=(\frac{1}{n-10})^2 (n-10)D(X_i)
+=\frac{\sigma^2}{n-10}
+$$
+(c). Is $$\hat{\mu_n}$$ efficient in a finite sample? If not, find another unbiased estimator of µ which has greater relative efficiency than  $$\hat{\mu_n}$$</p>
+<p>not efficient</p>
+<p>能够找到更加有效的估计量
+$$
+Var(\frac{1}{n-9}\sum^{n}_{i=10}{X_i})
+$$</p>
+<h3 id="%E7%AC%AC%E5%8D%81%E4%B8%80%E9%A2%98">第十一题</h3>
+<ol start="11">
+<li>Let X1, X2, ..., Xn be n independent observations from a population with mean µ and variance σ2. Prove that the sample variance S2 is an unbiased estimator of the population variance σ2.
+( Hint: V ar(X) = E(X2) - [E(X)]2 )<br>
+$$
+E(X)=\mu\
+E(\overline{X})=\mu\
+D(\overline{X})=\frac{\sigma^2}{n}\
+S^2=\frac{1}{n-1}\sum^{n}<em>{i=1}(X_i-\overline{X})^2\\
+E(S^2)=\frac{1}{n-1}(\sum^{n}</em>{i=1}E(Xi^2)-nE(\overline{X}^2))\
+=\frac{1}{n-1}[\sum^{n}_{i=1}(D(X_i)+E(X_i)^2)-n(D(\overline{X})+E(\overline{X})^2)]\
+=\frac{1}{n-1}(n\sigma^2+n\mu^2-\sigma^2-n\mu^2)=\sigma^2
+$$
+可得，$$E(S^2)=Var(X)=\sigma^2$$</li>
+</ol>
+<p>所以，样本方差$$S^2$$是总体方差的无偏估计。</p>
+<h3 id="%E7%AC%AC%E5%8D%81%E4%BA%8C%E9%A2%98">第十二题</h3>
+<p><strong>Bonus</strong></p>
+<ol start="12">
+<li>Consider the case of infinite population, prove that when the sampling method is simple random sampling and the sample size is large, sample proportion $$\overline{p}=\frac{x}{n}$$ can be approximated well by normal distribution, where x is the number of elements inthe sample that possess the characteristic of interest and n is the sample size.
+(Hint: central limit theorem for random variable x)</li>
+</ol>
+<p>由中心极限定理（central limit theorem）可知：从总体中抽取容量为n的简单随机样本，当样本容量很大时，样本均值的抽样分布近似服从正态分布</p>
+<p>题目条件：简单随机抽样，样本容量足够大
+$$
+X=\begin{cases}
+1 &amp; possess \ the \ characteristic \
+0 &amp; not \ possess\  the \ characteristic \
+\end{cases}
+$$
+$$
+E(X)=p\
+Var(X)=p(1-p)\
+x=X_1+X_2+…+X_n=\sum^{n}<em>{i=1}Xi\
+\overline{p}=\frac{1}{n}\sum^n</em>{i=1}Xi=\frac{x}{n}
+$$</p>
+<p>$$\overline{p}=\frac{x}{n}$$即为样本均值的抽样分布</p>
+<p>$\times$</p>
+
+</body>
+</html>
